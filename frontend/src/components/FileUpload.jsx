@@ -16,7 +16,7 @@ const FileUpload = ({ setData }) => {
     formData.append("file", file);
 
     try {
-      const res = await axios.post("http://localhost:5000/upload", formData);
+      const res = await axios.post("https://ai-data-analyst-dashboard-1ygy.onrender.com/upload", formData);
       setData(res.data);
     } catch (err) {
       console.error(err);
