@@ -8,16 +8,24 @@ const aiRoute = require("./routes/ai");
 
 const app = express();
 
-app.use(cors());
-app.use(express.json()); // ✅ VERY IMPORTANT
+// ✅ Middlewares
+app.use(cors({
+  origin: "*"
+}));
+app.use(express.json());
 
+// ✅ Routes
 app.use("/upload", uploadRoute);
 app.use("/ai", aiRoute);
 
+// ✅ Test route
 app.get("/", (req, res) => {
   res.send("Backend is running 🚀");
 });
 
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
+// ✅ PORT (important for Render)
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
